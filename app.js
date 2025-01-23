@@ -15,11 +15,7 @@ const taskSchema = new mongoose.Schema({
 const Task = mongoose.model('Task', taskSchema);
 // Route pour ajouter une tâche
 app.post('/tasks', async (req, res) => {
-    console.log('Change in feature/edit-task');
-
-
-    
-
+    console.log('Change in feature/add-task');
 
     try {
     const task = new Task(req.body);
