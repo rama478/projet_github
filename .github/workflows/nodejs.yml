@@ -1,0 +1,31 @@
+name: Node.js CI
+
+# Déclencheurs d'événements pour la CI
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+# Jobs définissant les étapes à exécuter
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Exécute les jobs sur une machine virtuelle Ubuntu
+
+    steps:
+      # Étape 1 : Vérification du code source
+      - uses: actions/checkout@v3
+
+      # Étape 2 : Configuration de Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # Spécifie la version de Node.js à utiliser
+
+      # Étape 3 : Installation des dépendances
+      - run: npm install
+
+      # Étape 4 : Exécution des tests
+      - run: npm test
